@@ -7,7 +7,7 @@ from utils import Media, get_file_details
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 
-TUTORIAL = "https://youtu.be/FCU_XJmyG_U"
+TUTORIAL GROUP = "https://t.me/KicchaRequest"
 
 @Client.on_message(filters.command("start"))
 async def start(bot, cmd):
@@ -69,7 +69,7 @@ async def start(bot, cmd):
                 buttons = [
                     [
                         InlineKeyboardButton('Search again', switch_inline_query_current_chat=''),
-                        InlineKeyboardButton('More Bots', url='https://t.me/subin_works/122')
+                        InlineKeyboardButton('Request Group', url='https://t.me/KicchaRequest')
                     ]
                     ]
                 await bot.send_cached_media(
@@ -100,9 +100,17 @@ async def start(bot, cmd):
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
+                    
+                    [
+                        InlineKeyboardButton("🎙  Add Me To Your Group ➕", url="https://t.me/Kirthi_mediafilterbot?startgroup=true"),
+                    ],
+                    [
+                        InlineKeyboardButton("🗣️Group", url="https://telegram.dog/KicchaRequest"),
+                        InlineKeyboardButton("📃 Channel", url="https://telegram.dog/GD_FILMCLUB"),
+                    ],
                     [
                         InlineKeyboardButton("Search Here", switch_inline_query_current_chat=''),
-                        InlineKeyboardButton("Other Bots", url="https://t.me/subin_works/122")
+                        InlineKeyboardButton("✳️ Collection", url="https://t.me/KR_ROCKERS_DVD_WEB_OTT_MOVIES")
                     ],
                     [
                         InlineKeyboardButton("About", callback_data="about")
@@ -194,8 +202,8 @@ async def delete(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('Update Channel', url='https://t.me/Mo_Tech_YT'),
-            InlineKeyboardButton('Video', url=f'{TUTORIAL}')
+            InlineKeyboardButton('Update Channel', url='https://t.me/GD_FILMCLUB'),
+            InlineKeyboardButton('Request Group', url=f'https://t.me/KicchaRequest')
         ]
         ]
-    await message.reply(text=f"<b>Developer : <a href='https://t.me/subinps_bot'>SUBIN</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='{TUTORIAL}'>Click here</a>\nUpdate Channel : <a href='https://t.me/Mo_Tech_YT'>Mo Tech YT</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await query.message.edit(text=f"<b>᳃ 𝐌𝐲 𝐁𝐨𝐬𝐬 : <a href='https://t.me/sachin_official_admin'>SACHIN S</a>\n᳃ 𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞 : <code>Python3</code>\n᳃ 𝐋𝐢𝐛𝐫𝐚𝐫𝐲 : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\n᳃ 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐆𝐫𝐨𝐮𝐩 : <a href='https://t.me/KicchaRequest'>Kiccha Request</a>\n᳃ 𝐔𝐩𝐝𝐚𝐭𝐞 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 : <a href='https://t.me/GD_FILMCLUB'>𝐊𝐢𝐜𝐜𝐡𝐚 𝐑𝐞𝐪𝐮𝐞𝐬𝐭 𝐂𝐡𝐚𝐧𝐧𝐞𝐥</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
