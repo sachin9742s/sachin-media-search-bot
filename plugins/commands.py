@@ -102,7 +102,7 @@ async def start(bot, cmd):
                 [
                     
                     [
-                        InlineKeyboardButton("🎙  Add Me To Your Group ➕", url="https://t.me/Kirthi_mediafilterbot?startgroup=true"),
+                        InlineKeyboardButton("🎙  Add Me To Your Group ➕", url="https://t.me/Sachin_autofilterBOT?startgroup=true"),
                     ],
                     [
                         InlineKeyboardButton("🗣️Group", url="https://telegram.dog/KicchaRequest"),
@@ -156,7 +156,7 @@ async def total(bot, message):
     msg = await message.reply("Processing...⏳", quote=True)
     try:
         total = await Media.count_documents()
-        await msg.edit(f'📁 Saved files: {total}')
+        await msg.edit(f'🗂️ Saved files: {total}')
     except Exception as e:
         logger.exception('Failed to check total files')
         await msg.edit(f'Error: {e}')
