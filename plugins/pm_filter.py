@@ -237,73 +237,73 @@ async def cb_handler(client: Client, query: CallbackQuery):
               return
 
 
-      elif query.data.startswith("back"):
-          ident, index, keyword = query.data.split("_")
-          try:
-              data = BUTTONS[keyword]
-          except KeyError:
-              await query.answer("You are using this for one of my old message, please send the request again.",show_alert=True)
-              return
+     elif query.data.startswith("back"):
+         ident, index, keyword = query.data.split("_")
+         try:
+             data = BUTTONS[keyword]
+         except KeyError:
+             await query.answer("You are using this for one of my old message, please send the request again.",show_alert=True)
+             return
 
-          if int(index) == 1:
-              buttons = data['buttons'][int(index)-1].copy()
+         if int(index) == 1:
+             buttons = data['buttons'][int(index)-1].copy()
 
-              buttons.append(
-                  [InlineKeyboardButton("≫ 𝑵𝒆𝒙𝒕 𝑷𝒂𝒈𝒆 ≫≫", callback_data=f"next_{int(index)-1}_{keyword}")]
-              )
-              buttons.append(
-                  [InlineKeyboardButton(f"🎶 ᑭᴀɢᴇꜱ {int(index)}/{data['total']}", callback_data="pages")]
-              )
+             buttons.append(
+                 [InlineKeyboardButton("≫ 𝑵𝒆𝒙𝒕 𝑷𝒂𝒈𝒆 ≫≫", callback_data=f"next_{int(index)-1}_{keyword}")]
+             )
+             buttons.append(
+                 [InlineKeyboardButton(f"🎶 ᑭᴀɢᴇꜱ {int(index)}/{data['total']}", callback_data="pages")]
+             )
 
-              await query.edit_message_reply_markup( 
-                  reply_markup=InlineKeyboardMarkup(buttons)
-              )
-              return   
-          else:
-              buttons = data['buttons'][int(index)-1].copy()
+             await query.edit_message_reply_markup( 
+                 reply_markup=InlineKeyboardMarkup(buttons)
+             )
+             return   
+         else:
+             buttons = data['buttons'][int(index)-1].copy()
 
-              buttons.append(
-                  [InlineKeyboardButton("⌫ 𝐁𝐚𝐜𝐤 ⌧", callback_data=f"back_{int(index)-1}_{keyword}"),InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)-1}_{keyword}")]
-              )
-              buttons.append(
-                  [InlineKeyboardButton(f"🎶 ᑭᴀɢᴇꜱ {int(index)}/{data['total']}", callback_data="pages")]
-              )
+             buttons.append(
+                 [InlineKeyboardButton("⌫ 𝐁𝐚𝐜𝐤 ⌧", callback_data=f"back_{int(index)-1}_{keyword}"),InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{int(index)-1}_{keyword}")]
+             )
+             buttons.append(
+                 [InlineKeyboardButton(f"🎶 ᑭᴀɢᴇꜱ {int(index)}/{data['total']}", callback_data="pages")]
+             )
 
-              await query.edit_message_reply_markup( 
-                  reply_markup=InlineKeyboardMarkup(buttons)
-              )
-              return
-      elif query.data == "about":
-          buttons = [
-              [
-                  InlineKeyboardButton('𝐔𝐩𝐝𝐚𝐭𝐞 𝐂𝐡𝐚𝐧𝐧𝐞𝐥', url='https://t.me/GD_FILMCLUB'),
-                  InlineKeyboardButton('𝐊𝐢𝐜𝐜𝐡𝐚 𝐑𝐞𝐪𝐮𝐞𝐬𝐭', url=f'https://t.me/KicchaRequest')
-              ]
-              ]
-          await query.message.edit(text=f"<b>᳃ My Boss : <a href='https://t.me/sachin_official_admin'>Sachin S</a>\n᳃ Language : <code>Python3</code>\n᳃ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\n᳃ Update Group : <a href='https://t.me/KicchaRequest'>Kiccha Request</a>\n᳃ Update Channel : <a href='https://t.me/GD_FILMCLUB'>Kiccha Request Channel</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+             await query.edit_message_reply_markup( 
+                 reply_markup=InlineKeyboardMarkup(buttons)
+             )
+             return
+     elif query.data == "about":
+         buttons = [
+             [
+                 InlineKeyboardButton('𝐔𝐩𝐝𝐚𝐭𝐞 𝐂𝐡𝐚𝐧𝐧𝐞𝐥', url='https://t.me/GD_FILMCLUB'),
+                 InlineKeyboardButton('𝐊𝐢𝐜𝐜𝐡𝐚 𝐑𝐞𝐪𝐮𝐞𝐬𝐭', url=f'https://t.me/KicchaRequest')
+             ]
+             ]
+         await query.message.edit(text=f"<b>᳃ My Boss : <a href='https://t.me/sachin_official_admin'>Sachin S</a>\n᳃ Language : <code>Python3</code>\n᳃ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\n᳃ Update Group : <a href='https://t.me/KicchaRequest'>Kiccha Request</a>\n᳃ Update Channel : <a href='https://t.me/GD_FILMCLUB'>Kiccha Request Channel</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
 
 
 
-      elif query.data.startswith("subinps"):
-        ident, file_id = query.data.split("#")
-        filedetails = await get_file_details(file_id)
-        for files in filedetails:
-            title = files.file_name
-            size=files.file_size
-            f_caption=files.caption
-            if CUSTOM_FILE_CAPTION:
-                try:
-                    f_caption=CUSTOM_FILE_CAPTION.format(file_name=title, file_size=size, file_caption=f_caption)
-                except Exception as e:
-                    print(e)
-                    f_caption=f_caption
-            if f_caption is None:
-                f_caption = f"{files.file_name}"
-            buttons = [
-                [
-                    InlineKeyboardButton(𝐓𝐯 𝐒𝐞𝐫𝐢𝐞𝐬 𝐂𝐡𝐚𝐧𝐧𝐞𝐥', url=f'https://t.me/TV_VIRISION')
-                ]
-                ]
+     elif query.data.startswith("subinps"):
+       ident, file_id = query.data.split("#")
+       filedetails = await get_file_details(file_id)
+       for files in filedetails:
+           title = files.file_name
+           size=files.file_size
+           f_caption=files.caption
+           if CUSTOM_FILE_CAPTION:
+               try:
+                   f_caption=CUSTOM_FILE_CAPTION.format(file_name=title, file_size=size, file_caption=f_caption)
+               except Exception as e:
+                   print(e)
+                   f_caption=f_caption
+           if f_caption is None:
+               f_caption = f"{files.file_name}"
+           buttons = [
+               [
+                   InlineKeyboardButton(𝐓𝐯 𝐒𝐞𝐫𝐢𝐞𝐬 𝐂𝐡𝐚𝐧𝐧𝐞𝐥', url=f'https://t.me/TV_VIRISION')
+               ]
+               ]
                 
             await query.answer()
             await client.send_cached_media(
