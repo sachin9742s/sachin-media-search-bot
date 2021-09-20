@@ -7,7 +7,7 @@ from utils import Media, get_file_details
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 
-TUTORIAL GROUP = "https://t.me/KicchaRequest"
+TUTORIAL = "https://t.me/KicchaRequest"
 
 @Client.on_message(filters.command("start"))
 async def start(bot, cmd):
