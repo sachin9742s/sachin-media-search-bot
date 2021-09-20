@@ -123,8 +123,8 @@ async def group(client, message):
                 file_id = file.file_id
                 filename = f"{file.file_name}"
                 btn.append(
-                    [InlineKeyboardButton(text=f"🗂️{filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}"),
-                     InlineKeyboardButton(text=f"🎬[{get_size(file.file_size)}]", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
+                    [InlineKeyboardButton(text=f"{filename}", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}"),
+                     InlineKeyboardButton(text=f"[{get_size(file.file_size)}]", url=f"https://telegram.dog/{nyva}?start=subinps_-_-_-_{file_id}")]
                 )
         else:
             return
