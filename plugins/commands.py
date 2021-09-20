@@ -7,6 +7,8 @@ from utils import Media, get_file_details
 from pyrogram.errors import UserNotParticipant
 logger = logging.getLogger(__name__)
 
+TUTORIAL = "https://youtu.be/FCU_XJmyG_U"
+
 @Client.on_message(filters.command("start"))
 async def start(bot, cmd):
     usr_cmdall1 = cmd.text
@@ -192,8 +194,8 @@ async def delete(bot, message):
 async def bot_info(bot, message):
     buttons = [
         [
-            InlineKeyboardButton('Update Channel', url='https://t.me/subin_works'),
-            InlineKeyboardButton('Source Code', url='https://github.com/subinps/Media-Search-bot')
+            InlineKeyboardButton('Update Channel', url='https://t.me/Mo_Tech_YT'),
+            InlineKeyboardButton('Video', url=f'{TUTORIAL}')
         ]
         ]
-    await query.message.edit(text=f"<b>᳃ My Boss : <a href='https://t.me/sachin_official_admin'>Sachin S</a>\n᳃ Language : <code>Python3</code>\n᳃ Library : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\n᳃ Update Group : <a href='https://t.me/KicchaRequest'>Kiccha Request</a>\n᳃ Update Channel : <a href='https://t.me/GD_FILMCLUB'>Kiccha Request Channel</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
+    await message.reply(text=f"<b>Developer : <a href='https://t.me/subinps_bot'>SUBIN</a>\nLanguage : <code>Python3</code>\nLibrary : <a href='https://docs.pyrogram.org/'>Pyrogram asyncio</a>\nSource Code : <a href='{TUTORIAL}'>Click here</a>\nUpdate Channel : <a href='https://t.me/Mo_Tech_YT'>Mo Tech YT</a> </b>", reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=True)
