@@ -5,7 +5,6 @@ from pyrogram import Client, filters
 import re
 from pyrogram.errors import UserNotParticipant
 from utils import get_filter_results, get_file_details, is_subscribed, get_poster
-from utils import RATING, GENRES, HELP, ABOUT
 BUTTONS = {}
 BOT = {}
 TUTORIAL = "https://t.me/KicchaRequest"
