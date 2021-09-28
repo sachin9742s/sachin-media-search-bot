@@ -5,6 +5,7 @@ from pyrogram import Client, filters
 import re
 from pyrogram.errors import UserNotParticipant
 from utils import get_filter_results, get_file_details, is_subscribed, get_poster
+from utils import RATING, GENRES, HELP, ABOUT
 BUTTONS = {}
 BOT = {}
 TUTORIAL = "https://t.me/KicchaRequest"
@@ -51,6 +52,7 @@ async def filter(client, message):
     if 2 < len(message.text) < 100:    
         btn = []
         search = message.text
+        sachin9742s = f"**🗂️ Title:** {search}\n**⭐ Rating:** {random.choice(RATING)}\n**🎭 Genre:** {random.choice(GENRES)}\n**📤 Uploaded by {message.chat.title}**"
         files = await get_filter_results(query=search)
         if files:
             for file in files:
@@ -112,6 +114,7 @@ async def group(client, message):
     if 2 < len(message.text) < 50:    
         btn = []
         search = message.text
+        sachin9742s = f"**🗂️ Title:** {search}\n**⭐ Rating:** {random.choice(RATING)}\n**🎭 Genre:** {random.choice(GENRES)}\n**📤 Uploaded by {message.chat.title}**"
         nyva=BOT.get("username")
         if not nyva:
             botusername=await client.get_me()
